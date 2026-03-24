@@ -1,2 +1,2 @@
 # Blackjack
-Progetto scolastico di blackjack fatto SENZA AI
+Progetto scolastico di blackjack fatto con uso moderato di AI
