@@ -783,7 +783,6 @@ class BlackjackServer:
         if is_split_assi:
             mano.is_stand = True
             nuova_mano.is_stand = True
-            # Invia messaggio esplicativo ai giocatori
             self._broadcast({
                 "type": "chat",
                 "player_id": None,
@@ -792,7 +791,20 @@ class BlackjackServer:
             })
             self._avanza_mano_o_giocatore(giocatore)
         else:
-            self._richiedi_azione(giocatore)
+            # Auto-stand se una delle mani ha esattamente 21 dopo lo split
+            if mano.calcola_punteggio() == 21:
+                mano.is_stand = True
+                print(f"[SERVER] {giocatore.nickname} mano 1 ha 21 dopo split. Stand automatico.")
+            if nuova_mano.calcola_punteggio() == 21:
+                nuova_mano.is_stand = True
+                print(f"[SERVER] {giocatore.nickname} mano 2 ha 21 dopo split. Stand automatico.")
+
+            # Se la mano attiva è già in stand (21), avanza alla prossima
+            mano_att = giocatore.mani[giocatore.mano_attiva]
+            if mano_att.is_stand:
+                self._avanza_mano_o_giocatore(giocatore)
+            else:
+                self._richiedi_azione(giocatore)
     
     def _avanza_mano_o_giocatore(self, giocatore: Giocatore):
         """Passa alla prossima mano del giocatore o al prossimo giocatore."""
