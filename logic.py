@@ -347,22 +347,12 @@ class Mano:
     def puo_splittare(self) -> bool:
         """
         Verifica se la mano può essere splittata.
-        
-        Returns:
-            True se lo split è consentito
+        Solo carte dello stesso valore (Q+Q, 10+10, ecc).
+        Figure diverse (Q+K, Q+J ecc) NON si possono splittare.
         """
         if len(self.carte) != 2:
             return False
-        
-        v1, v2 = self.carte[0].valore, self.carte[1].valore
-        
-        # Stessa carta
-        if v1 == v2:
-            return True
-        
-        # Figure e 10 possono essere splittate insieme
-        valori_dieci = ['10', 'J', 'Q', 'K']
-        return v1 in valori_dieci and v2 in valori_dieci
+        return self.carte[0].valore == self.carte[1].valore
     
     def puo_raddoppiare(self) -> bool:
         """
