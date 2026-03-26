@@ -1758,7 +1758,7 @@ class BlackjackGUI(ctk.CTk):
     
     def _on_sidebet_change(self, value: int):
         """Callback per cambio side bet."""
-        self.last_pp_bet = value
+        pass  # last_pp_bet viene aggiornato solo alla conferma reale
 
     def _confirm_bet(self):
         """Conferma la puntata e avvia la mano."""
