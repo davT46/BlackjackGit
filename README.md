@@ -166,4 +166,4 @@ Questo progetto dimostra l'utilizzo di:
 ---
 
 ## 📄 Licenza
-so educativo.
+Uso educativo.
