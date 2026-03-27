@@ -34,7 +34,7 @@ from logic import (
 # CONFIGURAZIONE SERVER
 # =============================================================================
 
-HOST = '127.0.0.1'        # Ascolta su tutte le interfacce
+HOST = '0.0.0.0'        # Ascolta su tutte le interfacce
 PORT = 5555             # Porta di ascolto
 MAX_PLAYERS = 3         # Massimo numero di giocatori
 MIN_PLAYERS = 1         # Minimo per iniziare
